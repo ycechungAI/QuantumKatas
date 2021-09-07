@@ -16,7 +16,8 @@ USER root
 RUN pip install -I --no-cache-dir \
         matplotlib \
         numpy \
-        pytest && \
+        pytest \
+        jupyter-client==7.0.2 && \
 # Give permissions to the jovyan user
     chown -R ${USER} ${HOME} && \
     chmod +x ${HOME}/scripts/*.sh
