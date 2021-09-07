@@ -27,6 +27,10 @@ RUN pip install -I --no-cache-dir \
 
 # From now on, just run things as the jovyan user
 USER ${USER}
+ADD Microsoft.Quantum.IQSharp.0.18.9999.99999.nupkg /home/jovyan/
+RUN rm -rf ~/.dotnet/tools && \
+    dotnet tool install -g Microsoft.Quantum.IQSharp --version 0.18.9999.99999 --add-source /home/jovyan/ && \
+    dotnet iqsharp install --user
 
 RUN cd ${HOME} && \
 # `dotnet restore` for each solution to ensure NuGet cache is fully populated
